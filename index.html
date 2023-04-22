@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>quotes baldevjeee</title>
+  <style>
+    /* set body styles */
+    body {
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: smaller;
+    }
+    /* set form styles */
+    form {
+      margin: 40px auto;
+      max-width: 600px;
+    }
+    label {
+      color: #666666;
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    input,
+    textarea {
+      border: 2px solid #cccccc;
+      border-radius: 4px;
+      font-size: 12px;
+      padding: 10px;
+      width: 100%;
+    }
+    input:focus,
+    textarea:focus {
+      border-color: #0070f3;
+      box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.5);
+      outline: none;
+    }
+    button {
+      background-color: #0070f3;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 12px;
+      margin: 20px 0;
+      padding: 10px 20px;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #0061c9;
+    }
+    #transpose-button {
+      background-color: #b71c1c;
+      margin-right: 10px;
+    }
+    #transpose-button:hover {
+      background-color: #8c1b1b;
+    }
+    #copy-button {
+      background-color: #0070f3;
+      margin-right: 10px;
+    }
+    #copy-button:hover {
+      background-color: #0061c9;
+    }
+    #submit-button {
+      background-color: #1b5e20;
+    }
+    #submit-button:hover {
+      background-color: #0d530d;
+    }
+    /* set code block styles */
+    #code {
+      background-color: #f7f7f7;
+      border-radius: 4px;
+      margin: 40px auto;
+      max-width: 600px;
+      padding: 20px;
+      white-space: pre-wrap;
+    }
+    #code code {
+      font-size: 16px;
+    }
+    #descriptionBox {
+      background-color: yellow;
+    }
+    #developedby {
+      font-style: italic;
+      color: brown;
+    }
+    .link-container {
+      position: fixed;
+      bottom: 50%;
+      left: 0;
+      right: 0;
+      text-align: bottom;
+    }
+    /* Style for the links */
+    .link-container a {
+      color: rgba(255, 38, 0, 0.971);
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 20px;
+      font-size: normal;
+    }
+  </style>
+</head>
+<body>
+  <a href="https://shivaprasadacharya.github.io/najirform.git.io/" target="_blank">NajirForm</a>
+  <form>
+    <a id="TOP"></a><label for="descriptionBox">ParkingText</label>
+    <textarea id="descriptionBox" placeholder="Park your text here"></textarea><br>
+    <label for="h3-input">ID  &amp;#x003C; </label>
+    <input type="text" id="h3-input" placeholder="Enter id "><br>
+    <br>
+    <label for="h4-input">Desc1</label>
+    <textarea id="h4-input" placeholder="Enter Quotes"></textarea>
+    <br>
+    <label for="h5-input">Desc2 </label>
+    <textarea id="h5-input" placeholder="Enter Quoter, Source"></textarea>
+    <br>
+    <label for="h6-input">Desc3 </label>
+    <textarea id="h6-input" placeholder="Enter Date"></textarea>
+    <br>
+    <label for="h7-input">Desc4</label>
+    <textarea id="h7-input" placeholder="Enter your criticism here"></textarea>
+    <label for="h8-input">Desc5</label>
+    <textarea id="h8-input" placeholder="Enter your keywords here"></textarea>
+    <br>
+    <button type="button" id="transpose-button">Transpose</button>
+    <button type="button" id="copy-button">Copy to Clipboard</button>
+    <button type="button" id="submit-button">Submit</button>
+  </form>
+  <div id="code">
+  </div>
+  <script>
+    const h3Input = document.getElementById("h3-input");
+    const h3Element = document.getElementById("h3-element");
+    const h4Input = document.getElementById("h4-input");
+    const h4Element = document.getElementById("h4-element");
+    const h5Input = document.getElementById("h5-input");
+    const h5Element = document.getElementById("h5-element");
+    const h6Input = document.getElementById("h6-input");
+    const h6Element = document.getElementById("h6-element");
+    const h7Input = document.getElementById("h7-input");
+    const h7Element = document.getElementById("h7-element");
+    const h8Input = document.getElementById("h8-input");
+    const h8Element = document.getElementById("h8-element");
+    const copyButton = document.getElementById("copy-button");
+    const generateButton = document.getElementById("submit-button");
+    generateButton.addEventListener("click", () => {
+      const codeElement = document.getElementById("code");
+      codeElement.innerHTML = `<code>  &#x003C;table&#x003E;&#x003C;tr&#x003E;&#x003C;td&#x003E;${h3Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h4Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h5Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h6Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;&#x003C;b&#x003E;&#x003C;u&#x003E;Criticism:&#x003C;/u&#x003E;&#x003C;/b&#x003E;&nbsp;${h7Input.value}&#x003C;/td&#x003E;&#x003C;td&#x003E;${h8Input.value}&#x003C;/td&#x003E;&#x003C;/tr&#x003E;&#x003C;/table&#x003E; 
+</code>`;
+      // Hide all tables except for the one with the matching ID
+      const parkingSection = document.getElementById("parkingsection");
+      const rows = parkingSection.getElementsByTagName("tr");
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        if (cells[0].innerText === h3Input.value) {
+          rows[i].style.display = "table-row";
+        } else {
+          rows[i].style.display = "none";
+        }
+      }
+    });
+    //aUTOFILL SCRIPT//
+    h3Input.addEventListener("input", () => {
+      const parkingSection = document.getElementById("parkingsection");
+      const rows = parkingSection.getElementsByTagName("tr");
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        if (cells[0].innerText === h3Input.value) {
+          h4Input.value = cells[1].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
+          h5Input.value = cells[2].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
+          h6Input.value = cells[3].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
+          h7Input.value = cells[4].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
+          h8Input.value = cells[5].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
+          rows[i].style.display = "table-row";
+        } else {
+          rows[i].style.display = "none";
+        }
+      }
+    });
+    //Hide//
+    function hideRows() {
+      const parkingSection = document.getElementById("parkingsection");
+      const rows = parkingSection.getElementsByTagName("tr");
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        if (cells[0].innerText !== h3Input.value) {
+          rows[i].style.display = "none";
+        }
+      }
+    }
+    //copyscript//
+    copyButton.addEventListener("click", () => {
+      const codeElement = document.getElementById("code");
+      const text = codeElement.innerText;
+      navigator.clipboard.writeText(text);
+      alert("Copied to clipboard!");
+    });
+    const transposeButton = document.getElementById("transpose-button");
+    transposeButton.addEventListener("click", () => {
+      // Get the currently filtered table
+      const parkingSection = document.getElementById("parkingsection");
+      const rows = parkingSection.getElementsByTagName("tr");
+      let filteredTable = null;
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        if (cells[0].innerText === h3Input.value) {
+          filteredTable = rows[i].parentNode;
+          break;
+        }
+      }
+      if (!filteredTable) {
+        // No matching table found, do nothing
+        return;
+      }
+      // Transpose the filtered table
+      const rowsArray = Array.from(filteredTable.rows);
+      const columnsArray = rowsArray[0].cells.length > 1 ? Array.from(rowsArray[0].cells) : [rowsArray[0]];
+      const newTable = document.createElement("table");
+      for (let j = 0; j < columnsArray.length; j++) {
+        const newRow = document.createElement("tr");
+        for (let i = 0; i < rowsArray.length; i++) {
+          const newCell = document.createElement("td");
+          const cellHtml = rowsArray[i].cells[j].innerHTML; // get the HTML content of the cell
+          newCell.innerHTML = cellHtml; // set the HTML content of the new cell
+          newRow.appendChild(newCell);
+        }
+        newTable.appendChild(newRow);
+      }
+      // Replace the filtered table with the transposed table
+      filteredTable.parentNode.insertBefore(newTable, filteredTable);
+      filteredTable.parentNode.removeChild(filteredTable);
+    });
+    function addLineBreakAndBold(inputElement) {
+      inputElement.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;br&#x003E; " +
+            inputElement.value.substring(cursorPosition);
+        } else if (event.ctrlKey && event.key === "b") {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;b&#x003E;  &#x003C;/b&#x003E; " +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 18, cursorPosition + 18); // Place the cursor inside the <b> tag
+        } else if (event.ctrlKey && event.key === "u") {
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;u&#x003E; &#x003C;/u&#x003E; " +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 18, cursorPosition + 18); // Place the cursor inside the <u> tag
+        }
+        else if (event.ctrlKey && event.key === " ") { // Ctrl+Space
+          event.preventDefault();
+          const cursorPosition = inputElement.selectionStart;
+          inputElement.value =
+            inputElement.value.substring(0, cursorPosition) +
+            "&#x003C;b&#x003E;&#x003C;u&#x003E; &#x003C;/u&#x003E;&#x003C;/b&#x003E; " +
+            inputElement.value.substring(cursorPosition);
+          inputElement.setSelectionRange(cursorPosition + 35, cursorPosition + 35); // Place the cursor inside the <u> tag
+        }
+      });
+    }
+    addLineBreakAndBold(h4Input);
+    addLineBreakAndBold(h5Input);
+    addLineBreakAndBold(h6Input);
+    addLineBreakAndBold(h7Input);
+    addLineBreakAndBold(h8Input);
+  </script>
+  <a id="MIDDLE"></a>
+  <section id="parkingsection">
+    <table><tr><td>001</td><td>GayatriMantra Chanting Process</td><td>deepen05, tiktok;</td><td> 22 April 2023</td><td><b><u>Criticism:</u></b> Atmasuchi, Bastrasuchi, Sarvaalankarsuchi</td><td>/gayatrimantra/</td></tr></table> 
+    <table><tr><td>002</td><td><b> Correction in Hanuman Chalisa </b> <br> 1.संकर सुवन केसरी नन्दन<br> संकर स्वयं केसरी नन्दन<br> <br> 2.सव पर राम तपस्वी राजा<br> सब पर राम रामसिर ताजा<br> <br> 3.सदा रहो रघुपति के दासा<br> सादर हो रघुपति के दासा<br> <br> 4.जो सतबार पाठ कर जोई<br> यह सतबार पाठ कर जोई<br> <br> </td><td>सत्य श्री सनातन धर्मध्वज स्वरूप जगद्गुरू स्वामी श्री रामभट्टाचार्य जी महाराज जी, ramgyanworld, tiktok</td><td>22 April 2023</td><td><b><u>Criticism:</u></b> First stanza is incorrect and second one is correct one.</td><td>/hanumanchalisa/</td></tr></table> 
+
+
+  </section>
+</body>
+<footer>
+  <a id="BOTTOM"></a></p>
+  <p id="developedby"><u><b>Developed By:</b></u><br> Debaka Timilsina (M.A, M.Ed; LL.B) <br> Shiva Prasad
+    Acharya
+    (M.Sc.; LL.M)<br> श्री अक्षयतृतीया, २०८०
+  <div class="link-container">
+    <a href="#TOP">&#x25B2;</a>
+    <a href="#MIDDLE">X&#772;</a>
+    <a href="#BOTTOM">&#x25BC;</a>
+  </div>
+</footer>
+</html>
+<!--format preserved in transpose, autofillwith breaks n bolds, table filtered, this is for quotes-->
