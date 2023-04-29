@@ -115,7 +115,6 @@ text-align: right;
   </style>
 </head>
 <body>
-<br><br>
   <div class="links">
     <a href="https://shivaprasadacharya.github.io/webpagewithforms.git.io/" target="_blank">Webpage with Forms</a>  </div>
   <form>
@@ -142,7 +141,8 @@ text-align: right;
     <button type="button" id="transpose-button">Transpose</button>
     <button type="button" id="copy-button">Copy to Clipboard</button>
     <button type="button" id="submit-button">Submit</button>
-   
+    <button type="button" id="download-button">Download Text</button>
+
   </form>
   <div id="code">
   </div>
@@ -290,6 +290,25 @@ text-align: right;
     addLineBreakAndBold(h6Input);
     addLineBreakAndBold(h7Input);
     addLineBreakAndBold(h8Input);
+        //download as .text//
+const downloadButton = document.getElementById("download-button");
+downloadButton.addEventListener("click", () => {
+  // Get the table HTML code
+  const tableCode = document.getElementById("code").textContent;
+  // Create a blob from the table code
+  const blob = new Blob([tableCode], {type: "text/plain"});
+  // Create a URL for the blob
+  const url = URL.createObjectURL(blob);
+  // Create a download link
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "quotes.txt";
+  // Click the link to start the download
+  link.click();
+  // Remove the link and blob
+  link.remove();
+  URL.revokeObjectURL(url);
+});
   </script>
 
   <section id="parkingsection">
