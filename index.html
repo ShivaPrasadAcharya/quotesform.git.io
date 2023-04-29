@@ -108,14 +108,12 @@
     }
    .links{
 text-align: right;
-
    }
-
-
   </style>
 </head>
 <body>
-  <br><br>
+  <br>
+  <br>
   <div class="links">
     <a href="https://shivaprasadacharya.github.io/webpagewithforms.git.io/" target="_blank">Webpage with Forms</a>  </div>
   <form>
@@ -143,7 +141,6 @@ text-align: right;
     <button type="button" id="copy-button">Copy to Clipboard</button>
     <button type="button" id="submit-button">Submit</button>
     <button type="button" id="download-button">Download Text</button>
-
   </form>
   <div id="code">
   </div>
@@ -178,24 +175,38 @@ text-align: right;
         }
       }
     });
-    //aUTOFILL SCRIPT//
-    h3Input.addEventListener("input", () => {
-      const parkingSection = document.getElementById("parkingsection");
-      const rows = parkingSection.getElementsByTagName("tr");
-      for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName("td");
-        if (cells[0].innerText === h3Input.value) {
-          h4Input.value = cells[1].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
-          h5Input.value = cells[2].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
-          h6Input.value = cells[3].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
-          h7Input.value = cells[4].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
-          h8Input.value = cells[5].innerHTML.replace(/<br>/g, "&#x003C;br&#x003E;").replace(/<b>/g, "&#x003C;b&#x003E;").replace(/<\/b>/g, "&#x003C;/b&#x003E;").replace(/<u>/g, "&#x003C;u&#x003E;").replace(/<\/u>/g, "&#x003C;/u&#x003E;");
-          rows[i].style.display = "table-row";
-        } else {
-          rows[i].style.display = "none";
-        }
+  //aUTOFILL SCRIPT//
+  h3Input.addEventListener("input", () => {
+  const parkingSection = document.getElementById("parkingsection");
+  const rows = parkingSection.getElementsByTagName("tr");
+  let found = false;
+  for (let i = 0; i < rows.length; i++) {
+    const cells = rows[i].getElementsByTagName("td");
+    if (cells[0].innerText === h3Input.value) {
+      found = true;
+      for (let j = 0; j < 5; j++) {
+        [h4Input, h5Input, h6Input, h7Input, h8Input][j].value = cells[j + 1].innerHTML.replace(/</g, "&#x003C;").replace(/>/g, "&#x003E;");
       }
-    });
+      //h3Input.style.color = "green"; // set text color to green for auto-populated value
+      //break;
+    }
+  }
+  if (found) {
+    h3Input.style.backgroundColor = "green";
+    h4Input.style.color = "black";
+    h5Input.style.color = "black";
+    h6Input.style.color = "black";
+    h7Input.style.color = "black";
+    h8Input.style.color = "black";
+  } else {
+    h3Input.style.backgroundColor = "orange";
+    h4Input.style.color = "grey";
+    h5Input.style.color = "grey";
+    h6Input.style.color = "grey";
+    h7Input.style.color = "grey";
+    h8Input.style.color = "grey";
+  }
+});
     //Hide//
     function hideRows() {
       const parkingSection = document.getElementById("parkingsection");
@@ -310,19 +321,54 @@ downloadButton.addEventListener("click", () => {
   link.remove();
   URL.revokeObjectURL(url);
 });
-  </script>
 
+   //Search fuction script//
+  
+   function searchFunction() {
+  var input, filter, tables, rows, cells, i, j, k, txtValue, match;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  tables = document.getElementsByTagName("table");
+  for (i = 0; i < tables.length; i++) {
+    rows = tables[i].getElementsByTagName("tr");
+    for (j = 0; j < rows.length; j++) {
+      cells = rows[j].getElementsByTagName("td");
+      match = false;
+      for (k = 0; k < cells.length; k++) {
+        txtValue = cells[k].textContent || cells[k].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          rows[j].style.display = "";
+          match = true;
+          cells[k].innerHTML = txtValue.replace(new RegExp(filter, "gi"), function(match) {
+            return "<mark>" + match + "</mark>";
+          });
+        } else {
+          cells[k].innerHTML = txtValue;
+        }
+      }
+      if (!match) {
+        rows[j].style.display = "none";
+      }
+    }
+  }
+}
+  </script>
   <section id="parkingsection">
     <table><tr><td>001</td><td>GayatriMantra Chanting Process</td><td>deepen05, tiktok;</td><td> 22 April 2023</td><td><b><u>Criticism:</u></b> Atmasuchi, Bastrasuchi, Sarvaalankarsuchi</td><td>/gayatrimantra/</td></tr></table> 
     <table><tr><td>002</td><td><b> Correction in Hanuman Chalisa </b> <br> 1.संकर सुवन केसरी नन्दन<br> संकर स्वयं केसरी नन्दन<br> <br> 2.सव पर राम तपस्वी राजा<br> सब पर राम रामसिर ताजा<br> <br> 3.सदा रहो रघुपति के दासा<br> सादर हो रघुपति के दासा<br> <br> 4.जो सतबार पाठ कर जोई<br> यह सतबार पाठ कर जोई<br> <br> </td><td>सत्य श्री सनातन धर्मध्वज स्वरूप जगद्गुरू स्वामी श्री रामभट्टाचार्य जी महाराज जी, ramgyanworld, tiktok</td><td>22 April 2023</td><td><b><u>Criticism:</u></b> First stanza is incorrect and second one is correct one.</td><td>/hanumanchalisa/</td></tr></table> 
     <table><tr><td>003</td><td>Past Life Regression, Past Life Therapy</td><td>rajhypno, tiktok</td><td>22 April 2023</td><td><b><u>Criticism:</u></b> Removal of negative energies acquired using tantra</td><td>/tantra/pastlifetherapy/pastliferegression/psychotherapy/</td></tr></table> 
     <table><tr><td>004</td><td><b><u> गठबन्धन:</u></b> तपाईहरूले जितएर पठाउनुभयो भने हामी मन्त्री बनाउँछौं।<br> <b><u> रास्वपा:</u></b> तपाईहरूले जिताएर पठाउनुभयो भने हामी देश बनाउँछौं।</td><td>social media, by-election campaign in tanahun</td><td>22 April 2023</td><td><b><u>Criticism:</u></b> <b><u>Criticism:</u></b> Feel the difference</td><td>/election/byelection/swanimwagle/<br> /raswopa/prachanda/tanahun/</td></tr></table> 
     <table><tr><td>005</td><td>सत्यलाई राज गराउने नीति नै राजनीति हो। धर्म भनेको सत्य हो। धर्मलाई राज गराउने नीति राजनीति हुन्छ। जहाँ धर्म छैन त्यहाँ राजनीति हुँदैन, अराजनीति हुन्छ। धर्म विनाको राजनीति अराजनीति हुन्छ। देश र जनतालाई राम्रो गर्नको लागि राजनीति गरिन्छ।  राम्रो गर्नु धर्म हो।  धर्ममा राजनीति गर्नुहुँदैन भनेर गलत बुझाई बसेको छ।</td><td>योगी पुष्पराज, सङ्गतसंस्कृति; tiktok (pushparajpuru.)</td><td>viewed on 22 April 2023</td><td><b><u>Criticism:</u></b> Relation between Religion and Politics</td><td>/religion/politics/religionnpolitics/</td></tr></table> 
-
+    <table><tr><td>006</td><td>आफ्नो आँगनमा आएको परिवर्तन मात्र परिवर्तन हो भन्ने सोच राख्ने मतदाताले reactive मत दिन सक्छन्।</td><td>गोकुल बास्कोट<br> interview</td><td>Retrieved on 29 April 2023 from tiktok, kesavkhanal0</td><td><b><u>Criticism:</u></b> nil</td><td>/votingpsychology/</td></tr></table> 
+    <table><tr><td>007</td><td>Books Free Friday</td><td>Concept of Mayor Balen Shah</td><td>29 April 2023</td><td><b><u>Criticism:</u></b> </td><td></td></tr></table> 
+    <table><tr><td>008</td><td>आर्थिक विकास अनुसन्धान, नवपर्वतन र आविष्कारबाट हुन्छ, जुन कुरा स्वर्णिम वाग्लेलाई पनि थाहा छैन</td><td>महाविर पुन</td><td>29 April 2023, tiktok</td><td><b><u>Criticism:</u></b> nil</td><td>/economicdevelopment/</td></tr></table> 
+    <table><tr><td>009</td><td>राज्यले सोच्ने कुरा व्यक्तिले सोच्नुभएको छ</td><td>महाविर पुनको न्युनतम १% बजेट R & D को लागि छुट्याउनुपर्छ भनी माइतिघरमा अनसन बसेको अवस्थामा  रवि लामिछानेले उहाँको पार्टिको तर्फबाट मागमा एक्यवद्धता जनाउँदै जाहेर गरेको भनाई</td><td>29 April 2023, tiktok</td><td><b><u>Criticism:</u></b> nil</td><td>/state&individual/</td></tr></table> 
+    <table><tr><td>010</td><td>Reaction को Politics सजिलो हुन्छ, Delivery को Politics गाह्रो हुन्छ</td><td>Gokul Baskota,</td><td>29 April 2023</td><td><b><u>Criticism:</u></b>  <b> <u> </u>  </b> To Demand is easy and to deliver is difficult<br> <b> Example </b> फौजदारी कसूर लागेको सांसदलाई प्रकाउ गर्न सकिएन भनेर आलोचना गर्न सजिलो छ, तर पक्रेर ल्याउने र कानूनी शासन मजबुत बनाउने कुरा चुनौतिपूर्ण छ</td><td>/democracydelivery/</td></tr></table> 
   </section>
 </body>
 <footer>
   <a id="BOTTOM"></a></p>
+  <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search...हरिनाम हरिनाम हरिनामैव केवलम् कलो नास्तैव नास्तैव नास्तैव गतिरन्यथा">
   <p id="developedby"><u><b>Developed By:</b></u><br> Debaka Timilsina (M.A, M.Ed; LL.B) <br> Shiva Prasad
     Acharya
     (M.Sc.; LL.M)<br> श्री अक्षयतृतीया, २०८०
@@ -333,5 +379,5 @@ downloadButton.addEventListener("click", () => {
   </div>
 </footer>
 </html>
-<!--format preserved in transpose, autofillwith breaks n bolds, table filtered, this is for quotes-->
-<!--004 bata push gariyeko xaina.-->
+<!--quotes-->
+<!--traspose correct गर्ने-->
